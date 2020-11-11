@@ -1,6 +1,10 @@
 // Copyright (C) 2020 twyleg
 import QtQuick 2.0
 
+import org.opendashboard.utils 0.1
+
+import "../ExtendedMenu/"
+
 Item {
 
 	id: tachometer
@@ -17,6 +21,9 @@ Item {
 	property real brake: 0
 
 	signal extendButtonPressed
+	property alias extendButtonVisible: extend_button.visible
+
+	property real fontSizeFactor: 1
 
 	onGearChanged: gear_animation.start()
 
@@ -26,7 +33,7 @@ Item {
 	}
 
 	ExtendButton {
-		id: exten_button
+		id: extend_button
 		anchors.fill: parent
 		onClicked: extendButtonPressed()
 	}
@@ -106,7 +113,7 @@ Item {
 		text: tachometer.gear
 		color: "white"
 		font.family: cpMonoFont.name
-		font.pointSize: 58
+		font.pixelSize: 0.1 * parent.height
 		anchors.verticalCenterOffset: parent.height * 0.21
 		anchors.centerIn: parent
 	}
@@ -116,7 +123,7 @@ Item {
 		text: tachometer.velocity.toFixed(0)
 		color: "white"
 		font.family: cpMonoFont.name
-		font.pointSize: 74
+		font.pixelSize: 0.10 * parent.height
 
 		anchors.verticalCenterOffset: -parent.height * 0.25
 		anchors.centerIn: parent
@@ -127,7 +134,7 @@ Item {
 		text: tachometer.rpm.toFixed(0)
 		color: "white"
 		font.family: cpMonoFont.name
-		font.pointSize: 38
+		font.pixelSize: 0.05 * parent.height
 
 		anchors.verticalCenterOffset: -parent.height * 0.17
 		anchors.centerIn: parent

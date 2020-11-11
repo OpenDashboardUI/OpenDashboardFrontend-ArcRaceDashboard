@@ -1,8 +1,9 @@
 // Copyright (C) 2020 twyleg
 import QtQuick 2.0
-import "../"
+import "../../Instruments"
 
 Item {
+	id: engineView
 
 	property real throttle: 0
 	property real brake: 0
@@ -19,13 +20,16 @@ Item {
 	//
 	// Upper line
 	//
+	property int upperLineNameTextSize: 0.04 * height
+	property int upperLineValueTextSize: 0.04 * height
+	property int upperLineUnitTextSize: 0.04 * height
 
 	Text {
 		x: parent.width * 0.2
 		y: parent.height * 0.08
 
 		font.family: cpMonoFont.name
-		font.pointSize: 17
+		font.pixelSize: 0.05 * parent.height
 		text: "Engine:"
 		color: "white"
 	}
@@ -42,6 +46,10 @@ Item {
 		valueMax: 10000
 		value: engineRpm
 		font: cpMonoFont
+
+		nameTextSize: upperLineNameTextSize
+		valueTextSize: upperLineValueTextSize
+		unitTextSize: upperLineUnitTextSize
 	}
 
 	CircularArcInstrument {
@@ -55,6 +63,10 @@ Item {
 		valueMax: 800
 		value: engineTorque
 		font: cpMonoFont
+
+		nameTextSize: upperLineNameTextSize
+		valueTextSize: upperLineValueTextSize
+		unitTextSize: upperLineUnitTextSize
 	}
 
 	CircularArcInstrument {
@@ -68,19 +80,26 @@ Item {
 		valueMax: 500
 		value: enginePowerOut
 		font: cpMonoFont
+
+		nameTextSize: upperLineNameTextSize
+		valueTextSize: upperLineValueTextSize
+		unitTextSize: upperLineUnitTextSize
 	}
 
 
 	//
 	// Lower line
 	//
+	property int lowerLineNameTextSize: 0.03 * height
+	property int lowerLineValueTextSize: 0.03 * height
+	property int lowerLineUnitTextSize: 0.03 * height
 
 	Text {
 		x: parent.width * 0.2
 		y: parent.height * 0.56
 
 		font.family: cpMonoFont.name
-		font.pointSize: 17
+		font.pixelSize: 0.05 * parent.height
 		text: "Gear-Box:"
 		color: "white"
 	}
@@ -92,14 +111,15 @@ Item {
 		y: parent.height * 0.75  - radius
 
 		nameText: "Pwr In"
-		nameTextSize: 13
 		unitText: "kw/h"
-		unitTextSize: 14
-		valueTextSize: 22
 
 		valueMax: 500
 		value: gearboxPowerIn
 		font: cpMonoFont
+
+		nameTextSize: lowerLineNameTextSize
+		valueTextSize: lowerLineValueTextSize
+		unitTextSize: lowerLineUnitTextSize
 	}
 
 	CircularArcInstrument {
@@ -109,14 +129,15 @@ Item {
 		y: parent.height * 0.75  - radius
 
 		nameText: "Rot In"
-		nameTextSize: 13
 		unitText: "rpm"
-		unitTextSize: 14
-		valueTextSize: 22
 
 		valueMax: 11000
 		value: gearboxRotationIn
 		font: cpMonoFont
+
+		nameTextSize: lowerLineNameTextSize
+		valueTextSize: lowerLineValueTextSize
+		unitTextSize: lowerLineUnitTextSize
 	}
 
 	CircularArcInstrument {
@@ -126,14 +147,15 @@ Item {
 		y: parent.height * 0.75  - radius
 
 		nameText: "Pwr Out"
-		nameTextSize: 13
 		unitText: "kw/h"
-		unitTextSize: 14
-		valueTextSize: 22
 
 		valueMax: 500
 		value: gearboxPowerOut
 		font: cpMonoFont
+
+		nameTextSize: lowerLineNameTextSize
+		valueTextSize: lowerLineValueTextSize
+		unitTextSize: lowerLineUnitTextSize
 	}
 
 	CircularArcInstrument {
@@ -143,14 +165,15 @@ Item {
 		y: parent.height * 0.75  - radius
 
 		nameText: "Rot Out"
-		nameTextSize: 13
 		unitText: "rpm"
-		unitTextSize: 14
-		valueTextSize: 22
 
 		valueMax: 11000
 		value: gearboxRotationOut
 		font: cpMonoFont
+
+		nameTextSize: lowerLineNameTextSize
+		valueTextSize: lowerLineValueTextSize
+		unitTextSize: lowerLineUnitTextSize
 	}
 
 

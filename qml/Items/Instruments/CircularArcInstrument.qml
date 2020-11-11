@@ -8,9 +8,9 @@ CircularArc {
 	property alias nameText: nameTextField.text
 	property alias unitText: unitTextField.text
 
-	property alias nameTextSize: nameTextField.font.pointSize
-	property alias valueTextSize: valueTextField.font.pointSize
-	property alias unitTextSize: unitTextField.font.pointSize
+	property alias nameTextSize: nameTextField.font.pixelSize
+	property alias valueTextSize: valueTextField.font.pixelSize
+	property alias unitTextSize: unitTextField.font.pixelSize
 
 	Text {
 		id: nameTextField
@@ -18,7 +18,7 @@ CircularArc {
 		anchors.centerIn: parent
 		anchors.verticalCenterOffset: - parent.height * 0.1
 
-		font.pointSize: 15
+		font.pixelSize: 15
 		color: "white"
 
 		font.family: parent.font.name
@@ -32,7 +32,7 @@ CircularArc {
 		anchors.verticalCenterOffset: parent.height * 0.1
 
 		font.family: parent.font.name
-		font.pointSize: 24
+		font.pixelSize: 24
 		color: "white"
 
 		text: parent.value.toPrecision(4);
@@ -47,7 +47,7 @@ CircularArc {
 		anchors.verticalCenterOffset: parent.radius * (1.0 - arcWidthRelative/2.0)
 
 		font.family: parent.font.name
-		font.pointSize: 16
+		font.pixelSize: 16
 		color: "white"
 
 		text: "psi"

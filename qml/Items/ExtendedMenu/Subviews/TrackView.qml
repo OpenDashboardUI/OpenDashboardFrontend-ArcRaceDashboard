@@ -1,6 +1,8 @@
 // Copyright (C) 2020 twyleg
 import QtQuick 2.0
 
+import org.opendashboard.utils 0.1
+
 import "../"
 
 Item {
@@ -17,6 +19,8 @@ Item {
 	property point mapPointA: Qt.point(6.9329183, 50.340457)
 	property point mapPointB: Qt.point(7.0031238, 50.3734083)
 
+	property bool animation: false
+
 	Item {
 		id: content
 
@@ -29,11 +33,14 @@ Item {
 		Svg {
 			id: track
 			source: qwd + "/build/extracted_layers/nurburgring_nordschleife_map_track.svg"
+
+			sourceSize: Qt.size(100, 100)
 		}
 
 		Svg {
 			id: text
 			source: qwd + "/build/extracted_layers/nurburgring_nordschleife_map_text.svg"
+			sourceSize: Qt.size(100, 100)
 		}
 
 		Svg {
@@ -43,6 +50,8 @@ Item {
 			anchors.fill: undefined
 			width: parent.width * 0.03
 			height: width
+
+			sourceSize: Qt.size(100, 100)
 		}
 	}
 

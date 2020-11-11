@@ -9,20 +9,24 @@ import QtQuick.Extras 1.4
 import QtPositioning 5.5
 import QtLocation 5.6
 
-import "./qml/"
+import "./Items"
 
-Item {
+Rectangle {
 	id: root
 
-	anchors.fill: parent
+	width: 1920
+	height: 1080
+
+	color: "black"
 
 	FontLoader {
 		id: cpMonoFont
 		source: qwd + "/fonts/CPMono_v07_Plain.otf"
 	}
 
-	MainItem {
+	MainItemRegular {
 		id: mainItem
 		anchors.centerIn: parent
 	}
+
 }

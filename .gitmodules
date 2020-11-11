@@ -1,6 +1,6 @@
-[submodule "external/OpenDashboardTrackData"]
-	path = external/OpenDashboardTrackData
-	url = git@github.com:OpenDashboardUI/OpenDashboardTrackData.git
-[submodule "external/svg_layer_extractor"]
-	path = external/svg_layer_extractor
-	url = git@github.com:twyleg/svg_layer_extractor.git
+[submodule "external/SvgLayerExtractor"]
+	path = external/SvgLayerExtractor
+	url = https://github.com/twyleg/svg_layer_extractor.git
+[submodule "external/OpenDashboardQmlModules"]
+	path = external/OpenDashboardQmlModules
+	url = https://github.com/OpenDashboardUI/OpenDashboardQmlModules.git

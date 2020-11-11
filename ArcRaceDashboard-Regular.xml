@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<OpenDashboardFrontendConfig>
+
+	<QmlMainFile>qml/ArcRaceDashboard-Regular.qml</QmlMainFile>
+
+	<QmlModuleImportPaths>
+		<Directory>external/OpenDashboardQmlModules/modules/</Directory>
+	</QmlModuleImportPaths>
+</OpenDashboardFrontendConfig>

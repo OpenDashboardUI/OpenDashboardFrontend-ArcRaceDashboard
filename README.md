@@ -19,7 +19,7 @@ Round dashboard without needles but arcs instead. The basic idea is to have a ro
 
 	# Running
 	cd ../
-	open_dashboard_backend -c external/OpenDashboardTrackData/nurburgring_nordschleife.xml ./ArcRaceDashboard.qml
+	open_dashboard_backend ./ArcRaceDashboard.qml
 
 ## Video
 
@@ -27,6 +27,6 @@ Round dashboard without needles but arcs instead. The basic idea is to have a ro
 
 ## Preview
 
-![](images/preview_0.png) 
+![](doc/images/preview_0.png) 
 
-![](images/preview_1.png) 
+![](doc/images/preview_1.png)

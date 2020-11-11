@@ -9,33 +9,35 @@ import QtQuick.Extras 1.4
 import QtPositioning 5.5
 import QtLocation 5.6
 
+import "./Instruments"
+import "./ExtendedMenu"
 
 Item {
 	id: cockpit
 
-	anchors.centerIn: parent
-	width: 1920
-	height: 1080
+	anchors.fill: parent
 
 	property bool isMenuExtended: false
 	property real tachometerRelX: 0.5
 	property real extendedMenuRelX: 0.0
 
 	ExtendedMenu {
-		id: extended_menu
+		id: extendedMenu
 
-		width: 1280 * extendedMenuRelX
-		height: 768
+		width: parent.width * 0.66 * extendedMenuRelX
+		height: parent.height * 0.7 * extendedMenuRelX
 
-		x: parent.width * 0.6 - width * 0.5
-		y: parent.height * 0.48 - height * 0.5
+		x: parent.width * 0.65 - width/2
+		y: parent.height * 0.48 - height/2
+
+		opacity: 0
 	}
 
 	Tachometer {
 		id: tachometer
 
-		width: 1000
-		height: 1000
+		width: parent.height * 0.95
+		height: parent.height * 0.95
 
 		x: parent.width * parent.tachometerRelX - width * 0.5
 		y: parent.heigh * 0.5 - height * 0.5
@@ -60,30 +62,52 @@ Item {
 		PropertyAnimation {
 			target: cockpit
 			property: "tachometerRelX"
-			to: 0.2
+			to: 0.25
 			easing.type: Easing.InOutQuad
 			duration: 200
 		}
 
-		PropertyAnimation {
-			target: cockpit
-			property: "extendedMenuRelX"
-			to: 1.0
-			easing.type: Easing.InOutQuad
-			duration: 300
+		ParallelAnimation {
+			PropertyAnimation {
+				target: cockpit
+				property: "extendedMenuRelX"
+				to: 1.0
+				easing.type: Easing.InOutQuad
+				duration: 300
+			}
+			PropertyAnimation {
+				target: extendedMenu
+				property: "opacity"
+				to: 1.0
+				easing.type: Easing.InOutQuad
+				duration: 300
+			}
+
+			onStarted: extendedMenu.animation = true
+			onStopped: extendedMenu.animation = false
+
 		}
+
 	}
 
 	SequentialAnimation {
 		id: closeExtendedMenuAnimation
 
-		PropertyAnimation {
-			target: cockpit
-			property: "extendedMenuRelX"
-			to: 0.0
-			easing.type: Easing.InOutQuad
-			duration: 300
-
+		ParallelAnimation {
+			PropertyAnimation {
+				target: cockpit
+				property: "extendedMenuRelX"
+				to: 0.0
+				easing.type: Easing.InOutQuad
+				duration: 300
+			}
+			PropertyAnimation {
+				target: extendedMenu
+				property: "opacity"
+				to: 0.0
+				easing.type: Easing.InOutQuad
+				duration: 300
+			}
 		}
 
 		PropertyAnimation {

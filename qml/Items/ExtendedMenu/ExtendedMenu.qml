@@ -4,7 +4,6 @@ import QtPositioning 5.6
 import QtWebEngine 1.1
 import QtWebChannel 1.0
 
-
 import QtQuick 2.0
 import QtQuick.Window 2.1
 import QtQuick.Controls 1.4
@@ -12,8 +11,9 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Extras 1.4
 import QtQuick.Layouts 1.3
 
+import org.opendashboard.utils 0.1
 
-import "./ExtendedMenuElements"
+import "./Subviews"
 
 Item {
 	id: extendedMenu
@@ -23,31 +23,38 @@ Item {
 
 	property int currentView: 0
 
+	property bool animation: false
+
 	Svg {
 		source: qwd + "/build/extracted_layers/extended_menu_frame.svg"
 		fillMode: Image.Stretch
+		smooth: !extendedMenu.animation
 	}
 
 	Svg {
 		source: qwd + "/build/extracted_layers/extended_menu_button_left_inactive.svg"
 		fillMode: Image.Stretch
+		smooth: !extendedMenu.animation
 	}
 
 	Svg {
 		source: qwd + "/build/extracted_layers/extended_menu_button_left_active.svg"
 		visible: leftPressed
 		fillMode: Image.Stretch
+		smooth: !extendedMenu.animation
 	}
 
 	Svg {
 		source: qwd + "/build/extracted_layers/extended_menu_button_right_inactive.svg"
 		fillMode: Image.Stretch
+		smooth: !extendedMenu.animation
 	}
 
 	Svg {
 		source: qwd + "/build/extracted_layers/extended_menu_button_right_active.svg"
 		visible: rightPressed
 		fillMode: Image.Stretch
+		smooth: !extendedMenu.animation
 	}
 
 	Item {
@@ -57,23 +64,23 @@ Item {
 		height: parent.height * 0.1
 		anchors.bottom: parent.bottom
 
-		ClickArea {
+		MouseArea {
 			id: leftClickArea
 
 			width: parent.width/2
 			height: parent.height
 			anchors.left: parent.left
-			onPressedChanged: leftPressed = isPressed
+			onPressedChanged: leftPressed = pressed
 			onPressed: leftClick()
 		}
 
-		ClickArea {
+		MouseArea {
 			id: rightClickArea
 
 			width: parent.width/2
 			height: parent.height
 			anchors.right: parent.right
-			onPressedChanged: rightPressed = isPressed
+			onPressedChanged: rightPressed = pressed
 			onPressed: rightClick()
 		}
 	}
@@ -97,6 +104,7 @@ Item {
 
 			Component{
 				id: trackViewComponent
+
 				Item {
 					TrackView {
 						width: stack.width * 0.9
@@ -111,6 +119,7 @@ Item {
 
 			Component{
 				id: engineViewComponent
+
 				EngineView{
 					width: stack.width
 					height: stack.height

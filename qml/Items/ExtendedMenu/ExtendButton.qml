@@ -1,15 +1,17 @@
 // Copyright (C) 2020 twyleg
 import QtQuick 2.0
 
+import org.opendashboard.utils 0.1
+
 Item {
-	id: extend_button
+	id: extendButton
 
 	signal clicked(bool extended)
 	property bool extended: false
 
 	Svg {
 		id: glow
-		visible: click_area.isPressed
+		visible: mouseArea.pressed
 		source: qwd + "/build/extracted_layers/tachometer_extend_button_glow.svg"
 	}
 
@@ -23,7 +25,7 @@ Item {
 		source: qwd + "/build/extracted_layers/tachometer_extend_button_arrows.svg"
 
 		transform: Rotation{
-			id: rotate_arrows
+			id: rotateArrows
 
 			origin.x: width * 0.5
 			origin.y: height * 0.935
@@ -38,14 +40,14 @@ Item {
 	}
 
 	Svg {
-		id: move_light
+		id: moveLight
 		source: qwd + "/build/extracted_layers/tachometer_extend_button_move_light.svg"
 
 		transform: Rotation{
 			id: rotate_move_light
 
-			origin.x: move_light.width * 0.5
-			origin.y: move_light.height * 0.9
+			origin.x: moveLight.width * 0.5
+			origin.y: moveLight.height * 0.9
 
 			SequentialAnimation on angle {
 
@@ -64,25 +66,28 @@ Item {
 		}
 	}
 
-	ClickArea {
-		id: click_area
+	RelativeItem {
 
 		relWidth: 0.2
 		relHeight: 0.15
 		relY: 0.9
 
-		onClicked: buttonClicked()
+		MouseArea {
+			id: mouseArea
+			anchors.fill: parent
+			onClicked: buttonClicked()
+		}
 	}
 
 	function buttonClicked(){
 
-		if (extend_button.extended)
+		if (extendButton.extended)
 			rotate_arrows_animation.to = 0
 		else
 			rotate_arrows_animation.to = 180
 		rotate_arrows_animation.start()
 
-		extend_button.extended = !extend_button.extended
-		extend_button.clicked(exten_button.extended)
+		extendButton.extended = !extendButton.extended
+		extendButton.clicked(extendButton.extended)
 	}
 }
